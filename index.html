@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lê Ngọc Nam — IT Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio IT của Lê Ngọc Nam — software engineer: backend, API, database và hạ tầng."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="nav">
+      <a class="logo" href="#top">LNN<span>/it</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">
+        Menu
+      </button>
+      <nav id="menu" class="menu">
+        <a href="#about">Giới thiệu</a>
+        <a href="#work">Dự án</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#experience">Kinh nghiệm</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow">Software Engineer · Hồ Chí Minh · 2026</p>
+        <h1>
+          Xin chào, mình là <em>Lê Ngọc Nam</em> —
+          xây hệ thống backend ổn định, API rõ hợp đồng, và hạ tầng dễ vận hành.
+        </h1>
+        <div class="hero-meta">
+          <p>
+            Lập trình viên IT: Java / Spring, Node.js, SQL, Docker. Ưu tiên code
+            dễ đọc, log đủ để debug, và deploy không phải canh tay.
+          </p>
+          <a class="btn" href="#work">Xem dự án IT</a>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div class="section-label">01 — Giới thiệu</div>
+        <div class="about-grid">
+          <h2>Viết phần mềm cho môi trường thật, không chỉ demo.</h2>
+          <div>
+            <p>
+              Mình làm việc quanh vòng đời ứng dụng: phân tích yêu cầu, thiết kế
+              API, schema database, auth, rồi đưa lên server. Quan tâm latency,
+              idempotency, backup và quyền truy cập — những thứ làm hệ thống
+              sống được sau ngày demo.
+            </p>
+            <p>
+              Đang tìm vị trí Junior / Mid Backend hoặc Full-stack, và nhận
+              freelance nhỏ: API nội bộ, CRUD, tích hợp thanh toán, script tự
+              động hóa.
+            </p>
+            <dl class="facts">
+              <div>
+                <dt>Vị trí</dt>
+                <dd>Hồ Chí Minh</dd>
+              </div>
+              <div>
+                <dt>Hướng</dt>
+                <dd>Backend · DevOps cơ bản</dd>
+              </div>
+              <div>
+                <dt>Email</dt>
+                <dd><a href="mailto:ngocnam@example.com">ngocnam@example.com</a></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="work">
+        <div class="section-label">02 — Dự án IT</div>
+        <h2>Một số hệ thống đã làm</h2>
+
+        <article class="project">
+          <pre class="project-visual code" aria-hidden="true"><code>POST /api/v1/tickets
+Authorization: Bearer …
+
+{
+  "priority": "high",
+  "assigneeId": 18,
+  "slaHours": 4
+}
+
+← 201 Created
+{"id":"TK-1042","status":"open"}</code></pre>
+          <div class="project-body">
+            <p class="tag">Backend · 2026</p>
+            <h3>Helpdesk API — ticket nội bộ</h3>
+            <p>
+              REST API quản lý ticket: phân quyền JWT, SLA, comment, upload
+              file. Có job đóng ticket quá hạn và audit log.
+            </p>
+            <ul>
+              <li>Java · Spring Boot</li>
+              <li>PostgreSQL</li>
+              <li>JWT · Redis</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project reverse">
+          <pre class="project-visual code" aria-hidden="true"><code>services:
+  api:
+    image: inventory-api:1.4
+    replicas: 2
+  db:
+    image: postgres:16
+    volumes: [pgdata]
+  worker:
+    command: npm run consume
+
+# health: /ready
+# logs → Loki</code></pre>
+          <div class="project-body">
+            <p class="tag">Full-stack · 2025</p>
+            <h3>Kho hàng — inventory + dashboard</h3>
+            <p>
+              Nhập/xuất kho, tồn theo lô, cảnh báo dưới định mức. Frontend React,
+              backend Node, queue xử lý import Excel.
+            </p>
+            <ul>
+              <li>Node.js · Express</li>
+              <li>React</li>
+              <li>Docker Compose</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project">
+          <pre class="project-visual code" aria-hidden="true"><code>$ gh run list --branch main
+✓ ci  · test + lint   1m12s
+✓ cd  · deploy staging 48s
+
+monitoring:
+  uptime  99.6%
+  p95     180ms
+  errors  0.4%</code></pre>
+          <div class="project-body">
+            <p class="tag">DevOps · 2025</p>
+            <h3>Pipeline CI/CD &amp; giám sát</h3>
+            <p>
+              GitHub Actions: test, build image, deploy VPS. Nginx reverse
+              proxy, HTTPS, healthcheck, alert Telegram khi 5xx tăng.
+            </p>
+            <ul>
+              <li>GitHub Actions</li>
+              <li>Nginx · Linux</li>
+              <li>Prometheus cơ bản</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section id="skills" class="skills">
+        <div class="section-label">03 — Kỹ năng</div>
+        <div class="skill-groups">
+          <div>
+            <h3>Ngôn ngữ</h3>
+            <ul>
+              <li>Java</li>
+              <li>JavaScript / TypeScript</li>
+              <li>SQL</li>
+              <li>Python (script)</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Backend &amp; data</h3>
+            <ul>
+              <li>Spring Boot</li>
+              <li>Node.js / Express</li>
+              <li>PostgreSQL · MySQL</li>
+              <li>Redis · REST</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Hạ tầng</h3>
+            <ul>
+              <li>Git · Linux</li>
+              <li>Docker</li>
+              <li>Nginx</li>
+              <li>CI/CD</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="experience">
+        <div class="section-label">04 — Kinh nghiệm</div>
+        <ol class="timeline">
+          <li>
+            <p class="tag">2025 — nay</p>
+            <h3>Backend intern / junior · Startup SaaS</h3>
+            <p>
+              Viết API, migration schema, sửa bug production, on-call nhẹ cùng
+              mentor. Tham gia standup và review PR.
+            </p>
+          </li>
+          <li>
+            <p class="tag">2024 — 2025</p>
+            <h3>Đồ án tốt nghiệp · Hệ thống quản lý phòng lab</h3>
+            <p>
+              Đăng ký máy, lịch bảo trì, phân quyền theo vai trò. Spring +
+              MySQL, deploy trên VPS trường.
+            </p>
+          </li>
+          <li>
+            <p class="tag">Học vấn</p>
+            <h3>Cử nhân Công nghệ thông tin</h3>
+            <p>Cấu trúc dữ liệu, mạng máy tính, CSDL, OOP, bảo mật cơ bản.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="section-label">05 — Liên hệ</div>
+        <h2>Cần người viết API, sửa hệ thống, hoặc intern IT?</h2>
+        <p>
+          Gửi JD hoặc brief: stack, deadline, repo (nếu có). Mình trả lời trong
+          1–2 ngày làm việc.
+        </p>
+        <a class="btn btn-large" href="mailto:ngocnam@example.com">Gửi email</a>
+        <div class="socials">
+          <a href="https://github.com" rel="noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com" rel="noreferrer">LinkedIn</a>
+          <a href="https://leetcode.com" rel="noreferrer">LeetCode</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>© 2026 Lê Ngọc Nam · IT Portfolio</span>
+      <button class="to-top" type="button">Lên đầu trang</button>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>
